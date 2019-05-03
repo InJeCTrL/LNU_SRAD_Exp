@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  DataBaseMgr.cpp
+d:\code trunk\lnu_srad_exp\design\stock\stock\databasemgr.h(8): warning C4091: “static ”: 没有声明变量时忽略“DataBaseMgr”的左侧
+  Stock.cpp
+  StockDlg.cpp
+d:\code trunk\lnu_srad_exp\design\stock\stock\databasemgr.h(8): warning C4091: “static ”: 没有声明变量时忽略“DataBaseMgr”的左侧
+  正在生成代码...
+  Stock.vcxproj -> D:\Code Trunk\LNU_SRAD_Exp\Design\Stock\x64\Debug\Stock.exe
