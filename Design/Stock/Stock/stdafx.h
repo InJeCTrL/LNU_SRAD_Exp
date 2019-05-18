@@ -32,13 +32,11 @@
 #endif // _AFX_NO_AFXCMN_SUPPORT
 
 #include <afxcontrolbars.h>     // 功能区和控件条的 MFC 支持
-
-
-
-
-
-
-
+#include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
+// 添加ADO支持
+#import "c:\\program files\\common files\\system\\ado\\msado15.dll" no_namespace rename("EOF", "adoEOF")
 
 
 #ifdef _UNICODE
@@ -50,5 +48,3 @@
 #pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #endif
 #endif
-
-

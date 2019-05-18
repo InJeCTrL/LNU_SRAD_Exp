@@ -31,8 +31,6 @@ void CStockDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CStockDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_BUTTON1, &CStockDlg::OnBnClickedButton1)
-	ON_BN_CLICKED(IDC_BUTTON2, &CStockDlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 
@@ -46,8 +44,6 @@ BOOL CStockDlg::OnInitDialog()
 	//  执行此操作
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
-
-	// TODO: 在此添加额外的初始化代码
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -86,16 +82,4 @@ void CStockDlg::OnPaint()
 HCURSOR CStockDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
-}
-
-//单击导入
-void CStockDlg::OnBnClickedButton1()
-{
-	// TODO: 在此添加控件通知处理程序代码
-}
-
-//单击清空数据库
-void CStockDlg::OnBnClickedButton2()
-{
-	// TODO: 在此添加控件通知处理程序代码
 }

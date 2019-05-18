@@ -3,6 +3,8 @@
 //
 
 #include "stdafx.h"
+#include "ConfPanel.h"
+#include "SearchPanel.h"
 #include "Stock.h"
 #include "StockDlg.h"
 
@@ -51,8 +53,9 @@ BOOL CStockApp::InitInstance()
 
 	CWinApp::InitInstance();
 
-
+	
 	AfxEnableControlContainer();
+	AfxOleInit();
 
 	// 创建 shell 管理器，以防对话框包含
 	// 任何 shell 树视图控件或 shell 列表视图控件。
@@ -70,7 +73,11 @@ BOOL CStockApp::InitInstance()
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
 
-	CStockDlg dlg;
+	//CStockDlg dlg;
+	//m_pMainWnd = &dlg;
+	//ConfPanel dlg;
+	//m_pMainWnd = &dlg;
+	SearchPanel dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

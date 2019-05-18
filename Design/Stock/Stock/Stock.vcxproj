@@ -179,15 +179,77 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ConfPanel.h" />
     <ClInclude Include="DataBaseMgr.h" />
+    <ClInclude Include="DataPanel.h" />
+    <ClInclude Include="Foresee.h" />
+    <ClInclude Include="HS-Charting\ChartAxis.h" />
+    <ClInclude Include="HS-Charting\ChartAxisLabel.h" />
+    <ClInclude Include="HS-Charting\ChartBalloonLabel.h" />
+    <ClInclude Include="HS-Charting\ChartBarSerie.h" />
+    <ClInclude Include="HS-Charting\ChartCandlestickSerie.h" />
+    <ClInclude Include="HS-Charting\ChartCrossHairCursor.h" />
+    <ClInclude Include="HS-Charting\ChartCtrl.h" />
+    <ClInclude Include="HS-Charting\ChartCursor.h" />
+    <ClInclude Include="HS-Charting\ChartDateTimeAxis.h" />
+    <ClInclude Include="HS-Charting\ChartDragLineCursor.h" />
+    <ClInclude Include="HS-Charting\ChartFont.h" />
+    <ClInclude Include="HS-Charting\ChartGanttSerie.h" />
+    <ClInclude Include="HS-Charting\ChartGradient.h" />
+    <ClInclude Include="HS-Charting\ChartGrid.h" />
+    <ClInclude Include="HS-Charting\ChartLabel.h" />
+    <ClInclude Include="HS-Charting\ChartLegend.h" />
+    <ClInclude Include="HS-Charting\ChartLineSerie.h" />
+    <ClInclude Include="HS-Charting\ChartLogarithmicAxis.h" />
+    <ClInclude Include="HS-Charting\ChartMouseListener.h" />
+    <ClInclude Include="HS-Charting\ChartPointsArray.h" />
+    <ClInclude Include="HS-Charting\ChartPointsSerie.h" />
+    <ClInclude Include="HS-Charting\ChartScrollBar.h" />
+    <ClInclude Include="HS-Charting\ChartSerie.h" />
+    <ClInclude Include="HS-Charting\ChartSerieBase.h" />
+    <ClInclude Include="HS-Charting\ChartSeriesMouseListener.h" />
+    <ClInclude Include="HS-Charting\ChartStandardAxis.h" />
+    <ClInclude Include="HS-Charting\ChartString.h" />
+    <ClInclude Include="HS-Charting\ChartSurfaceSerie.h" />
+    <ClInclude Include="HS-Charting\ChartTitle.h" />
+    <ClInclude Include="HS-Charting\ChartXYSerie.h" />
+    <ClInclude Include="HS-Charting\PointsOrdering.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SearchPanel.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Stock.h" />
     <ClInclude Include="StockDlg.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConfPanel.cpp" />
     <ClCompile Include="DataBaseMgr.cpp" />
+    <ClCompile Include="DataPanel.cpp" />
+    <ClCompile Include="Foresee.cpp" />
+    <ClCompile Include="HS-Charting\ChartAxis.cpp" />
+    <ClCompile Include="HS-Charting\ChartAxisLabel.cpp" />
+    <ClCompile Include="HS-Charting\ChartBarSerie.cpp" />
+    <ClCompile Include="HS-Charting\ChartCandlestickSerie.cpp" />
+    <ClCompile Include="HS-Charting\ChartCrossHairCursor.cpp" />
+    <ClCompile Include="HS-Charting\ChartCtrl.cpp" />
+    <ClCompile Include="HS-Charting\ChartCursor.cpp" />
+    <ClCompile Include="HS-Charting\ChartDateTimeAxis.cpp" />
+    <ClCompile Include="HS-Charting\ChartDragLineCursor.cpp" />
+    <ClCompile Include="HS-Charting\ChartFont.cpp" />
+    <ClCompile Include="HS-Charting\ChartGanttSerie.cpp" />
+    <ClCompile Include="HS-Charting\ChartGradient.cpp" />
+    <ClCompile Include="HS-Charting\ChartGrid.cpp" />
+    <ClCompile Include="HS-Charting\ChartLegend.cpp" />
+    <ClCompile Include="HS-Charting\ChartLineSerie.cpp" />
+    <ClCompile Include="HS-Charting\ChartLogarithmicAxis.cpp" />
+    <ClCompile Include="HS-Charting\ChartPointsSerie.cpp" />
+    <ClCompile Include="HS-Charting\ChartScrollBar.cpp" />
+    <ClCompile Include="HS-Charting\ChartSerie.cpp" />
+    <ClCompile Include="HS-Charting\ChartStandardAxis.cpp" />
+    <ClCompile Include="HS-Charting\ChartSurfaceSerie.cpp" />
+    <ClCompile Include="HS-Charting\ChartTitle.cpp" />
+    <ClCompile Include="HS-Charting\ChartXYSerie.cpp" />
+    <ClCompile Include="SearchPanel.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -201,9 +263,15 @@
     <ResourceCompile Include="Stock.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="HS-Charting\ChartBalloonLabel.inl" />
+    <None Include="HS-Charting\ChartLabel.inl" />
+    <None Include="HS-Charting\ChartPointsArray.inl" />
+    <None Include="HS-Charting\ChartSerieBase.inl" />
     <None Include="res\Stock.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\icon2.ico" />
+    <Image Include="res\ooopic_1556672383.ico" />
     <Image Include="res\Stock.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

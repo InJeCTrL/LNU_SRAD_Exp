@@ -4,7 +4,6 @@
 
 #pragma once
 
-
 // CStockDlg 对话框
 class CStockDlg : public CDialogEx
 {
@@ -31,6 +30,4 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedButton1();
-	afx_msg void OnBnClickedButton2();
 };
