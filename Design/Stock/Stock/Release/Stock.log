@@ -1,43 +1,11 @@
-﻿  stdafx.cpp
-  ConfPanel.cpp
+﻿  ConfPanel.cpp
   DataBaseMgr.cpp
-  DataPanel.cpp
-d:\code trunk\lnu_srad_exp\design\stock\stock\datapanel.cpp(150): warning C4018: “<”: 有符号/无符号不匹配
-d:\code trunk\lnu_srad_exp\design\stock\stock\datapanel.cpp(153): warning C4018: “<”: 有符号/无符号不匹配
-d:\code trunk\lnu_srad_exp\design\stock\stock\datapanel.cpp(301): warning C4996: '_wcstok': This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  d:\windows kits\10\include\10.0.17763.0\ucrt\corecrt_wstring.h(247): note: 参见“_wcstok”的声明
-d:\code trunk\lnu_srad_exp\design\stock\stock\datapanel.cpp(305): warning C4996: '_wcstok': This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  d:\windows kits\10\include\10.0.17763.0\ucrt\corecrt_wstring.h(247): note: 参见“_wcstok”的声明
-  Foresee.cpp
-  ChartAxis.cpp
-  ChartAxisLabel.cpp
-  ChartBarSerie.cpp
-  ChartCandlestickSerie.cpp
-  ChartCrossHairCursor.cpp
-  ChartCtrl.cpp
-  ChartCursor.cpp
-  ChartDateTimeAxis.cpp
-  ChartDragLineCursor.cpp
-  ChartFont.cpp
-  ChartGanttSerie.cpp
-  ChartGradient.cpp
-  ChartGrid.cpp
-  ChartLegend.cpp
-  ChartLineSerie.cpp
-  ChartLogarithmicAxis.cpp
-  正在编译...
-  ChartPointsSerie.cpp
-  ChartScrollBar.cpp
-  ChartSerie.cpp
-  ChartStandardAxis.cpp
-  ChartSurfaceSerie.cpp
-  ChartTitle.cpp
-  ChartXYSerie.cpp
   SearchPanel.cpp
 d:\code trunk\lnu_srad_exp\design\stock\stock\searchpanel.cpp(213): warning C4018: “<”: 有符号/无符号不匹配
   Stock.cpp
-  StockDlg.cpp
   正在生成代码
-  All 1981 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  17 of 1982 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    15 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   Stock.vcxproj -> D:\Code Trunk\LNU_SRAD_Exp\Design\Stock\Release\Stock.exe

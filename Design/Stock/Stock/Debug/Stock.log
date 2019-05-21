@@ -1,2 +1,7 @@
-﻿  DataBaseMgr.cpp
+﻿  ConfPanel.cpp
+  DataBaseMgr.cpp
+  SearchPanel.cpp
+d:\code trunk\lnu_srad_exp\design\stock\stock\searchpanel.cpp(213): warning C4018: “<”: 有符号/无符号不匹配
+  Stock.cpp
+  正在生成代码...
   Stock.vcxproj -> D:\Code Trunk\LNU_SRAD_Exp\Design\Stock\Debug\Stock.exe

@@ -14,13 +14,6 @@ IMPLEMENT_DYNAMIC(ConfPanel, CDialogEx)
 ConfPanel::ConfPanel(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_ConfPanel_DIALOG, pParent)
 {
-	DataBaseMgr db = DataBaseMgr();
-	if (db.TestDB() == ERR)
-	{
-		m_In.EnableWindow(FALSE);
-		m_Clean.EnableWindow(FALSE);
-		MessageBox(L"数据库连接失败！", L"初始化失败");
-	}
 }
 
 ConfPanel::~ConfPanel()
@@ -72,12 +65,30 @@ void ConfPanel::OnBnClickedButton1()
 		if (::SHGetPathFromIDList(lpidlBrowse, szFolderPath))
 		{
 			strFolderPath = szFolderPath;
+			if (db.CSV2DB(strFolderPath) == ERR)
+			{
+				MessageBox(L"导入失败，请检查数据库是否为空或文件是否正确！", L"初始化失败");
+			}
 		}
 	}
 	if (lpidlBrowse != NULL)
 	{
 		::CoTaskMemFree(lpidlBrowse);
 	}
+}
 
-	db.CSV2DB(strFolderPath);
+BOOL ConfPanel::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	DataBaseMgr db = DataBaseMgr();
+	if (db.TestDB() == ERR)
+	{
+		m_In.EnableWindow(FALSE);
+		m_Clean.EnableWindow(FALSE);
+		MessageBox(L"数据库连接失败！", L"初始化失败");
+	}
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // 异常: OCX 属性页应返回 FALSE
 }

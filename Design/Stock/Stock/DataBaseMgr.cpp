@@ -24,7 +24,14 @@ INT DataBaseMgr::TestDB(void)
 
 DataBaseMgr::~DataBaseMgr(void)
 {
-	pConnection->Close();
+	try
+	{
+		pConnection->Close();
+	}
+	catch (_com_error e)
+	{
+		;
+	}
 }
 
 INT DataBaseMgr::CleanDB(void)
@@ -32,7 +39,7 @@ INT DataBaseMgr::CleanDB(void)
 	TestDB();
 	try
 	{
-		pRecordset->Open("Delete from CodeName",
+		pRecordset->Open("Drop table CodeName",
 			pConnection.GetInterfacePtr(),
 			adOpenDynamic,
 			adLockOptimistic,
@@ -74,7 +81,7 @@ INT DataBaseMgr::CleanDB(void)
 INT DataBaseMgr::CSV2DB(CString FolderPath)
 {
 	TestDB();
-	CString str_CodeName = L"Insert INTO CodeName Select * FROM [TEXT;FMT=CSV;DELIMITED;HDR=YES;DATABASE=" + FolderPath + L"].[CodeName.csv];";
+	CString str_CodeName = L"Select * INTO CodeName FROM [TEXT;FMT=CSV;DELIMITED;HDR=YES;DATABASE=" + FolderPath + L"].[CodeName.csv];";
 	CString str_cashflow = L"Select * INTO cashflow FROM [TEXT;FMT=CSV;DELIMITED;IMEX=1;HDR=YES;DATABASE=" + FolderPath + L"].[cashflow.csv];";
 	CString str_income = L"Select * INTO income FROM [TEXT;FMT=CSV;DELIMITED;IMEX=1;HDR=YES;DATABASE=" + FolderPath + L"].[income.csv];";
 	CString str_balance = L"Select * INTO balance FROM [TEXT;FMT=CSV;DELIMITED;IMEX=1;HDR=YES;DATABASE=" + FolderPath + L"].[balance.csv];";
@@ -86,42 +93,49 @@ INT DataBaseMgr::CSV2DB(CString FolderPath)
 	char str_balance_ANSI[1024] = { 0 };
 	char str_MainDG_ANSI[1024] = { 0 };
 	char str_LotsofInfo_ANSI[1024] = { 0 };
-	WideCharToMultiByte(CP_ACP, 0, str_CodeName, str_CodeName.GetLength(), str_CodeName_ANSI, 1024, NULL, NULL);
-	pRecordset->Open(str_CodeName_ANSI,
-		pConnection.GetInterfacePtr(),
-		adOpenDynamic,
-		adLockOptimistic,
-		adCmdText);
-	WideCharToMultiByte(CP_ACP, 0, str_cashflow, str_cashflow.GetLength(), str_cashflow_ANSI, 1024, NULL, NULL);
-	pRecordset->Open(str_cashflow_ANSI,
-		pConnection.GetInterfacePtr(),
-		adOpenDynamic,
-		adLockOptimistic,
-		adCmdText);
-	WideCharToMultiByte(CP_ACP, 0, str_income, str_income.GetLength(), str_income_ANSI, 1024, NULL, NULL);
-	pRecordset->Open(str_income_ANSI,
-		pConnection.GetInterfacePtr(),
-		adOpenDynamic,
-		adLockOptimistic,
-		adCmdText);
-	WideCharToMultiByte(CP_ACP, 0, str_balance, str_balance.GetLength(), str_income_ANSI, 1024, NULL, NULL);
-	pRecordset->Open(str_income_ANSI,
-		pConnection.GetInterfacePtr(),
-		adOpenDynamic,
-		adLockOptimistic,
-		adCmdText);
-	WideCharToMultiByte(CP_ACP, 0, str_MainDG, str_MainDG.GetLength(), str_MainDG_ANSI, 1024, NULL, NULL);
-	pRecordset->Open(str_MainDG_ANSI,
-		pConnection.GetInterfacePtr(),
-		adOpenDynamic,
-		adLockOptimistic,
-		adCmdText);
-	WideCharToMultiByte(CP_ACP, 0, str_LotsofInfo, str_LotsofInfo.GetLength(), str_LotsofInfo_ANSI, 1024, NULL, NULL);
-	pRecordset->Open(str_LotsofInfo_ANSI,
-		pConnection.GetInterfacePtr(),
-		adOpenDynamic,
-		adLockOptimistic,
-		adCmdText);
+	try
+	{
+		WideCharToMultiByte(CP_ACP, 0, str_CodeName, str_CodeName.GetLength(), str_CodeName_ANSI, 1024, NULL, NULL);
+		pRecordset->Open(str_CodeName_ANSI,
+			pConnection.GetInterfacePtr(),
+			adOpenDynamic,
+			adLockOptimistic,
+			adCmdText);
+		WideCharToMultiByte(CP_ACP, 0, str_cashflow, str_cashflow.GetLength(), str_cashflow_ANSI, 1024, NULL, NULL);
+		pRecordset->Open(str_cashflow_ANSI,
+			pConnection.GetInterfacePtr(),
+			adOpenDynamic,
+			adLockOptimistic,
+			adCmdText);
+		WideCharToMultiByte(CP_ACP, 0, str_income, str_income.GetLength(), str_income_ANSI, 1024, NULL, NULL);
+		pRecordset->Open(str_income_ANSI,
+			pConnection.GetInterfacePtr(),
+			adOpenDynamic,
+			adLockOptimistic,
+			adCmdText);
+		WideCharToMultiByte(CP_ACP, 0, str_balance, str_balance.GetLength(), str_income_ANSI, 1024, NULL, NULL);
+		pRecordset->Open(str_income_ANSI,
+			pConnection.GetInterfacePtr(),
+			adOpenDynamic,
+			adLockOptimistic,
+			adCmdText);
+		WideCharToMultiByte(CP_ACP, 0, str_MainDG, str_MainDG.GetLength(), str_MainDG_ANSI, 1024, NULL, NULL);
+		pRecordset->Open(str_MainDG_ANSI,
+			pConnection.GetInterfacePtr(),
+			adOpenDynamic,
+			adLockOptimistic,
+			adCmdText);
+		WideCharToMultiByte(CP_ACP, 0, str_LotsofInfo, str_LotsofInfo.GetLength(), str_LotsofInfo_ANSI, 1024, NULL, NULL);
+		pRecordset->Open(str_LotsofInfo_ANSI,
+			pConnection.GetInterfacePtr(),
+			adOpenDynamic,
+			adLockOptimistic,
+			adCmdText);
+	}
+	catch (_com_error e)
+	{
+		return ERR;
+	}
 
 	return OK;
 }

@@ -25,4 +25,5 @@ public:
 	afx_msg void OnBnClickedButton1();
 	CButton m_In;
 	CButton m_Clean;
+	virtual BOOL OnInitDialog();
 };
