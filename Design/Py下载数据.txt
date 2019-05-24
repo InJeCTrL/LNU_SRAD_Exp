@@ -18,8 +18,8 @@ for year in list(range(2005,2020)):
 q = query(income.symbol,income.date,income.report_date,income.profit_from_operations,cashflow.net_cash_flows_from_opt_act,profit_sq.roe,growth_sq.opt_profit_growth_ratio,
          cashflow.net_cash_flows_from_opt_act,cashflow.cash_paid_for_assets,income.basic_eps)
 df = get_fundamentals(q, list_days)
-#q2 = query(ashareprofit.roic_ttm)
-#df2 = get_fundamentals(q2, list_days)
+d2 = query(ashareprofit.roic_ttm)
+df2 = get_fundamentals(q2, list_days)
 df['symbol'] = df['income_symbol']
 df['date'] = df['income_date']
 df['date_repo'] = df['income_report_date']
@@ -29,18 +29,11 @@ df['roe'] = df['profit_sq_roe']
 df['opt_profit_growth_ratio'] = df['growth_sq_opt_profit_growth_ratio']
 df['NmC'] = df['cashflow_net_cash_flows_from_opt_act'] - df['cashflow_cash_paid_for_assets']
 df['basic_eps'] = df['income_basic_eps']
-#df['roic_ttm'] = df2['ashareprofit_roic_ttm']
+df['roic_ttm'] = df2['ashareprofit_roic_ttm']
 
 df = df.drop(['income_symbol','income_date','income_report_date','income_profit_from_operations','cashflow_net_cash_flows_from_opt_act','profit_sq_roe',
              'growth_sq_opt_profit_growth_ratio','cashflow_net_cash_flows_from_opt_act','cashflow_cash_paid_for_assets','income_basic_eps'],axis=1)
-#计算均值方差
-for s in list(get_all_securities('stock','20151010').index):
-    tdf = df.loc[df['symbol'] == s]
-    for a in list(df.loc[df['symbol'] == s].index):
-        df.iloc[a]['roe_ave'] = np.mean(tdf['roe'])
-
-print(df)
-#df.to_csv('MainDG.csv',index=False)
+df.to_csv('MainDG.csv',index=False)
 
 
 '''

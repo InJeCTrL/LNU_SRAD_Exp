@@ -1,11 +1,7 @@
-﻿  ConfPanel.cpp
-  DataBaseMgr.cpp
-  SearchPanel.cpp
-d:\code trunk\lnu_srad_exp\design\stock\stock\searchpanel.cpp(213): warning C4018: “<”: 有符号/无符号不匹配
-  Stock.cpp
+﻿  DataBaseMgr.cpp
   正在生成代码
-  17 of 1982 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    15 functions had inline decision re-evaluated but remain unchanged
+  2 of 1982 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    43 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   Stock.vcxproj -> D:\Code Trunk\LNU_SRAD_Exp\Design\Stock\Release\Stock.exe

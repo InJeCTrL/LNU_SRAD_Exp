@@ -148,7 +148,9 @@ std::vector<std::array<CString, 2>> DataBaseMgr::SearchMainDG(INT SearchIndex, I
 	_variant_t vtnode[2];
 	char SQL_ANSI[10001] = { 0 };
 	CString SQL = L"Select distinct CodeName.symbol,display_name from MainDG, CodeName where MainDG.symbol = CodeName.symbol";
-	
+	CString SQL_datePart = L" ";
+	CString SQL_SearchPart;
+
 	//ππ‘ÏSQL”Ôæ‰
 	if (SearchIndex == 6)
 	{
@@ -159,13 +161,13 @@ std::vector<std::array<CString, 2>> DataBaseMgr::SearchMainDG(INT SearchIndex, I
 		switch (Combo_index)
 		{
 		case 0:
-			SQL += L" and date > 2018-01-01";
+			SQL_datePart = L" and date > 2018-01-01 ";
 			break;
 		case 1:
-			SQL += L" and date > 2014-01-01";
+			SQL_datePart = L" and date > 2014-01-01 ";
 			break;
 		case 2:
-			SQL += L" and date > 2008-01-01";
+			SQL_datePart = L" and date > 2008-01-01 ";
 			break;
 		default:
 			break;
@@ -173,41 +175,42 @@ std::vector<std::array<CString, 2>> DataBaseMgr::SearchMainDG(INT SearchIndex, I
 		switch (SearchIndex)
 		{
 		case 0:
-			SQL += L" and profit_from_operations <> null and CDbl(profit_from_operations) between " + edit[0][0] + L" and " + edit[0][1];
+			SQL_SearchPart = L"profit_from_operations";
 			break;
 		case 1:
-			SQL += L" and net_cash_flows_from_opt_act <> null and CDbl(net_cash_flows_from_opt_act) between " + edit[0][0] + L" and " + edit[0][1];
+			SQL_SearchPart = L"net_cash_flows_from_opt_act";
 			break;
 		case 2:
 			if (Combo_index == 3)
-				SQL += L" and roe_ave <> null and CDbl(roe_ave) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"roe_ave";
 			else if (Combo_index == 4)
-				SQL += L" and roe_vic <> null and CDbl(roe_vic) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"roe_vic";
 			else
-				SQL += L" and roe <> null and CDbl(roe) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"roe";
 			break;
 		case 3:
 			if (Combo_index == 3)
-				SQL += L" and opt_profit_growth_ratio_ave <> null and CDbl(opt_profit_growth_ratio_ave) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"opt_profit_growth_ratio_ave";
 			else if (Combo_index == 4)
-				SQL += L" and opt_profit_growth_ratio_vic <> null and CDbl(opt_profit_growth_ratio_vic) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"opt_profit_growth_ratio_vic";
 			else
-				SQL += L" and opt_profit_growth_ratio <> null and CDbl(opt_profit_growth_ratio) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"opt_profit_growth_ratio";
 			break;
 		case 4:
 			if (Combo_index == 3)
-				SQL += L" and roic_ttm_ave <> null and CDbl(roic_ttm_ave) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"roic_ttm_ave";
 			else if (Combo_index == 4)
-				SQL += L" and roic_ttm_vic <> null and CDbl(roic_ttm_vic) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"roic_ttm_vic";
 			else
-				SQL += L" and roic_ttm <> null and CDbl(roic_ttm) between " + edit[0][0] + L" and " + edit[0][1];
+				SQL_SearchPart = L"roic_ttm";
 			break;
 		case 5:
-			SQL += L" and CDbl(basic_eps) between " + edit[0][0] + L" and " + edit[0][1];
+			SQL_SearchPart = L"basic_eps";
 			break;
 		default:
 			break;
 		}
+		SQL = L"select distinct E.C.B.symbol as symbol,display_name from (select distinct C.B.symbol from(select distinct B.symbol from(select distinct symbol from MainDG where Format(date, \"q\") = 4" + SQL_datePart + L"and CVar(" + SQL_SearchPart + L") not between " + edit[0][0] + L" and " + edit[0][1] + L") as A right outer join MainDG as B on A.symbol = B.symbol where A.symbol is null and B.symbol is not null) as C left outer join(select distinct symbol from MainDG where Format(date, \"q\") = 4) as D on C.B.symbol = D.symbol where D.symbol is not null) as E, CodeName where CodeName.symbol = E.C.B.symbol";
 	}
 	try
 	{
