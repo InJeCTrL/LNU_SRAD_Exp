@@ -1,0 +1,3 @@
+﻿  t.c
+d:\code trunk\lnu_srad_exp\exp3\fan\fan\t.c(76): warning C4028: 形参 3 与声明不同
+  Fan.vcxproj -> D:\Code Trunk\LNU_SRAD_Exp\Exp3\Fan\Debug\Fan.exe

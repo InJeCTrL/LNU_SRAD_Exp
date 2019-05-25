@@ -1,0 +1,6 @@
+﻿  t.c
+d:\code trunk\lnu_srad_exp\exp3\fan\fan\t.c(57): warning C4028: 形参 3 与声明不同
+  正在生成代码
+  All 2 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  Fan.vcxproj -> D:\Code Trunk\LNU_SRAD_Exp\Exp3\Fan\Release\Fan.exe
