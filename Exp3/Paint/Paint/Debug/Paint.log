@@ -1,4 +1,4 @@
 ﻿  t.c
-d:\code trunk\lnu_srad_exp\exp3\paint\paint\t.c(19): warning C4101: “i”: 未引用的局部变量
-d:\code trunk\lnu_srad_exp\exp3\paint\paint\t.c(88): warning C4028: 形参 3 与声明不同
+d:\code trunk\lnu_srad_exp\exp3\paint\paint\t.c(20): warning C4101: “i”: 未引用的局部变量
+d:\code trunk\lnu_srad_exp\exp3\paint\paint\t.c(121): warning C4028: 形参 3 与声明不同
   Paint.vcxproj -> D:\Code Trunk\LNU_SRAD_Exp\Exp3\Paint\Debug\Paint.exe

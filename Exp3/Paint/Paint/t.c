@@ -2,15 +2,16 @@
 #include<math.h>
 #include<stdio.h>
 
+#define SWAP(x,y) (x = x + y, y = x - y, x -= y)
+
 //窗体尺寸信息
 #define thisWidth			700//程序宽度
 #define thisHeight			700//程序高度
 
-
 HWND hwnd;//主窗体
 HDC hDC;
 PAINTSTRUCT ps;
-INT selDraw = 0;//1:椭圆 2:矩形
+INT selDraw = 0;//1:正在画椭圆 2:正在画矩形 3:画过椭圆 4:画过矩形
 POINT dp1 = { 0,0 }, dp2 = { 0,0 };//左上右下
 
 //窗体回调
@@ -20,23 +21,55 @@ LRESULT WINAPI CtlProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	switch (message)
 	{
-	case WM_KEYDOWN:
-		switch (LOWORD(wParam))
+	case WM_LBUTTONDOWN:
+		if (wParam & MK_CONTROL)
 		{
-		case VK_CONTROL:
+			dp1.x = LOWORD(lParam);
+			dp1.y = HIWORD(lParam);
 			selDraw = 1;
-			dp1.x = 300;
-			dp1.y = 300;
-			dp2.x = 500;
-			dp2.y = 600;
-			break;
-		case VK_SHIFT:
+		}
+		else if (wParam & MK_SHIFT)
+		{
+			dp1.x = LOWORD(lParam);
+			dp1.y = HIWORD(lParam);
 			selDraw = 2;
-			dp1.x = 300;
-			dp1.y = 300;
-			dp2.x = 500;
-			dp2.y = 700;
-			break;
+		}
+		break;
+	case WM_MOUSEMOVE:
+		if (selDraw == 1)
+		{
+			dp2.x = LOWORD(lParam);
+			dp2.y = HIWORD(lParam);
+			InvalidateRect(hWnd, NULL, TRUE);
+			UpdateWindow(hWnd);
+			Ellipse(hDC, dp1.x, dp1.y, dp2.x, dp2.y);
+		}
+		else if (selDraw == 2)
+		{
+			dp2.x = LOWORD(lParam);
+			dp2.y = HIWORD(lParam);
+			InvalidateRect(hWnd, NULL, TRUE);
+			UpdateWindow(hWnd);
+			Rectangle(hDC, dp1.x, dp1.y, dp2.x, dp2.y);
+		}
+		break;
+	case WM_LBUTTONUP:
+		if (selDraw >= 1 && selDraw <= 2)
+		{
+			selDraw += 2;
+			if (dp1.x > dp2.x)
+			{
+				SWAP(dp1.x, dp2.x);
+			}
+			if (dp1.y > dp2.y)
+			{
+				SWAP(dp1.y, dp2.y);
+			}
+		}
+		break;
+	case WM_KEYDOWN:
+		switch (wParam)
+		{
 		case VK_RIGHT:
 			dp2.x += 10;
 			break;
@@ -62,13 +95,13 @@ LRESULT WINAPI CtlProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		default:
 			break;
 		}
-		if (selDraw == 1)
+		if (selDraw == 3)
 		{
 			InvalidateRect(hWnd, NULL, TRUE);
 			UpdateWindow(hWnd);
 			Ellipse(hDC, dp1.x, dp1.y, dp2.x, dp2.y);
 		}
-		else if (selDraw == 2)
+		else if (selDraw == 4)
 		{
 			InvalidateRect(hWnd, NULL, TRUE);
 			UpdateWindow(hWnd);
