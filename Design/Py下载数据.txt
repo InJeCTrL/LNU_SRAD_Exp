@@ -9,17 +9,23 @@ df.to_csv('CodeName.csv')
 下载 主要指标 表
 '''
 import numpy as np 
-# ashareprofit.roic_ttm 会有很多缺少
 list_days = []
 for year in list(range(2005,2020)):
     for season in list(range(1,5)):
         list_days.append(str(year) + 'q' + str(season))
 #获取数据
-q = query(income.symbol,income.date,income.report_date,income.profit_from_operations,cashflow.net_cash_flows_from_opt_act,profit_sq.roe,growth_sq.opt_profit_growth_ratio,
-         cashflow.net_cash_flows_from_opt_act,cashflow.cash_paid_for_assets,income.basic_eps)
+q = query(income.symbol,
+income.date,
+income.report_date,
+income.profit_from_operations,
+cashflow.net_cash_flows_from_opt_act,
+profit_sq.roe,
+growth_sq.opt_profit_growth_ratio,
+cashflow.net_cash_flows_from_opt_act,
+cashflow.cash_paid_for_assets,
+income.basic_eps,
+income.operating_income)
 df = get_fundamentals(q, list_days)
-d2 = query(ashareprofit.roic_ttm)
-df2 = get_fundamentals(q2, list_days)
 df['symbol'] = df['income_symbol']
 df['date'] = df['income_date']
 df['date_repo'] = df['income_report_date']
@@ -27,12 +33,10 @@ df['profit_from_operations'] = df['income_profit_from_operations']
 df['net_cash_flows_from_opt_act'] = df['cashflow_net_cash_flows_from_opt_act']
 df['roe'] = df['profit_sq_roe']
 df['opt_profit_growth_ratio'] = df['growth_sq_opt_profit_growth_ratio']
-df['NmC'] = df['cashflow_net_cash_flows_from_opt_act'] - df['cashflow_cash_paid_for_assets']
+df['NmC'] = (df['cashflow_net_cash_flows_from_opt_act'] - df['cashflow_cash_paid_for_assets']) / df['income_operating_income']
 df['basic_eps'] = df['income_basic_eps']
-df['roic_ttm'] = df2['ashareprofit_roic_ttm']
 
-df = df.drop(['income_symbol','income_date','income_report_date','income_profit_from_operations','cashflow_net_cash_flows_from_opt_act','profit_sq_roe',
-             'growth_sq_opt_profit_growth_ratio','cashflow_net_cash_flows_from_opt_act','cashflow_cash_paid_for_assets','income_basic_eps'],axis=1)
+df = df.drop(['income_symbol','income_date','income_report_date','income_profit_from_operations','cashflow_net_cash_flows_from_opt_act','profit_sq_roe','growth_sq_opt_profit_growth_ratio','cashflow_net_cash_flows_from_opt_act','cashflow_cash_paid_for_assets','income_basic_eps','income_operating_income'],axis=1)
 df.to_csv('MainDG.csv',index=False)
 
 

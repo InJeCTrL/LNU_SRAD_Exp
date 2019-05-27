@@ -197,12 +197,7 @@ std::vector<std::array<CString, 2>> DataBaseMgr::SearchMainDG(INT SearchIndex, I
 				SQL_SearchPart = L"opt_profit_growth_ratio";
 			break;
 		case 4:
-			if (Combo_index == 3)
-				SQL_SearchPart = L"roic_ttm_ave";
-			else if (Combo_index == 4)
-				SQL_SearchPart = L"roic_ttm_vic";
-			else
-				SQL_SearchPart = L"roic_ttm";
+			SQL_SearchPart = L"NmC";
 			break;
 		case 5:
 			SQL_SearchPart = L"basic_eps";
