@@ -175,10 +175,10 @@ std::vector<std::array<CString, 2>> DataBaseMgr::SearchMainDG(INT SearchIndex, I
 		switch (SearchIndex)
 		{
 		case 0:
-			SQL_SearchPart = L"profit_from_operations";
+			SQL_SearchPart = L"operating_profit";
 			break;
 		case 1:
-			SQL_SearchPart = L"net_cash_flows_from_opt_act";
+			SQL_SearchPart = L"net_operate_cash_flow";
 			break;
 		case 2:
 			if (Combo_index == 3)
@@ -190,17 +190,22 @@ std::vector<std::array<CString, 2>> DataBaseMgr::SearchMainDG(INT SearchIndex, I
 			break;
 		case 3:
 			if (Combo_index == 3)
-				SQL_SearchPart = L"opt_profit_growth_ratio_ave";
+				SQL_SearchPart = L"inc_operation_profit_year_on_year_ave";
 			else if (Combo_index == 4)
-				SQL_SearchPart = L"opt_profit_growth_ratio_vic";
+				SQL_SearchPart = L"inc_operation_profit_year_on_year_vic";
 			else
-				SQL_SearchPart = L"opt_profit_growth_ratio";
+				SQL_SearchPart = L"inc_operation_profit_year_on_year";
 			break;
 		case 4:
-			SQL_SearchPart = L"NmC";
+			if (Combo_index == 3)
+				SQL_SearchPart = L"NmC_ave";
+			else if (Combo_index == 4)
+				SQL_SearchPart = L"NmC_vic";
+			else
+				SQL_SearchPart = L"NmC";
 			break;
 		case 5:
-			SQL_SearchPart = L"basic_eps";
+			SQL_SearchPart = L"eps";
 			break;
 		default:
 			break;

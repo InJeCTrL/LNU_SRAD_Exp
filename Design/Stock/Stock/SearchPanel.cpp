@@ -108,6 +108,8 @@ BOOL SearchPanel::OnInitDialog()
 	m_combo[2].AddString(L"方差");
 	m_combo[3].AddString(L"均值");
 	m_combo[3].AddString(L"方差");
+	m_combo[4].AddString(L"均值");
+	m_combo[4].AddString(L"方差");
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
